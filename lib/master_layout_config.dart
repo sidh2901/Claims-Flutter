@@ -52,11 +52,11 @@ final sidebarMenuConfigs = [
     icon: Icons.library_books_rounded,
     title: (context) => Lang.of(context).pages(2),
     children: [
-      SidebarChildMenuConfig(
-        uri: RouteUri.error404,
-        icon: Icons.circle_outlined,
-        title: (context) => Lang.of(context).error404,
-      ),
+      // SidebarChildMenuConfig(
+      //   uri: RouteUri.error404,
+      //   icon: Icons.circle_outlined,
+      //   title: (context) => Lang.of(context).error404,
+      // ),
       SidebarChildMenuConfig(
         uri: RouteUri.login,
         icon: Icons.circle_outlined,
@@ -67,11 +67,11 @@ final sidebarMenuConfigs = [
         icon: Icons.circle_outlined,
         title: (context) => Lang.of(context).register,
       ),
-      SidebarChildMenuConfig(
-        uri: RouteUri.crud,
-        icon: Icons.circle_outlined,
-        title: (context) => 'CRUD',
-      ),
+      // SidebarChildMenuConfig(
+      //   uri: RouteUri.crud,
+      //   icon: Icons.circle_outlined,
+      //   title: (context) => 'CRUD',
+      // ),
     ],
   ),
   // SidebarMenuConfig(
