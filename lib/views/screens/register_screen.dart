@@ -44,7 +44,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           onError.call('This username is already taken.');
         } else {
           await userDataProvider.setUserDataAsync(
-            username: 'Admin ABC',
+            username: 'Admin',
             userProfileImageUrl: 'https://picsum.photos/id/1005/300/300',
           );
 
@@ -122,7 +122,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: kDefaultPadding * 2.0),
+                      padding:
+                          const EdgeInsets.only(bottom: kDefaultPadding * 2.0),
                       child: Text(
                         lang.registerANewAccount,
                         style: themeData.textTheme.titleMedium,
@@ -134,38 +135,46 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       child: Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(bottom: kDefaultPadding * 1.5),
+                            padding: const EdgeInsets.only(
+                                bottom: kDefaultPadding * 1.5),
                             child: FormBuilderTextField(
                               name: 'username',
                               decoration: InputDecoration(
                                 labelText: lang.username,
                                 hintText: lang.username,
-                                helperText: '* To test registration fail: admin',
+                                helperText:
+                                    '* To test registration fail: admin',
                                 border: const OutlineInputBorder(),
-                                floatingLabelBehavior: FloatingLabelBehavior.always,
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.always,
                               ),
                               enableSuggestions: false,
                               validator: FormBuilderValidators.required(),
-                              onSaved: (value) => (_formData.username = value ?? ''),
+                              onSaved: (value) =>
+                                  (_formData.username = value ?? ''),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(bottom: kDefaultPadding * 1.5),
+                            padding: const EdgeInsets.only(
+                                bottom: kDefaultPadding * 1.5),
                             child: FormBuilderTextField(
                               name: 'email',
                               decoration: InputDecoration(
                                 labelText: lang.email,
                                 hintText: lang.email,
                                 border: const OutlineInputBorder(),
-                                floatingLabelBehavior: FloatingLabelBehavior.always,
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.always,
                               ),
                               keyboardType: TextInputType.emailAddress,
                               validator: FormBuilderValidators.required(),
-                              onSaved: (value) => (_formData.email = value ?? ''),
+                              onSaved: (value) =>
+                                  (_formData.email = value ?? ''),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(bottom: kDefaultPadding * 1.5),
+                            padding: const EdgeInsets.only(
+                                bottom: kDefaultPadding * 1.5),
                             child: FormBuilderTextField(
                               name: 'password',
                               decoration: InputDecoration(
@@ -173,7 +182,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 hintText: lang.password,
                                 helperText: lang.passwordHelperText,
                                 border: const OutlineInputBorder(),
-                                floatingLabelBehavior: FloatingLabelBehavior.always,
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.always,
                               ),
                               enableSuggestions: false,
                               obscureText: true,
@@ -183,25 +193,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 FormBuilderValidators.minLength(6),
                                 FormBuilderValidators.maxLength(18),
                               ]),
-                              onSaved: (value) => (_formData.password = value ?? ''),
+                              onSaved: (value) =>
+                                  (_formData.password = value ?? ''),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(bottom: kDefaultPadding * 2.0),
+                            padding: const EdgeInsets.only(
+                                bottom: kDefaultPadding * 2.0),
                             child: FormBuilderTextField(
                               name: 'retypePassword',
                               decoration: InputDecoration(
                                 labelText: lang.retypePassword,
                                 hintText: lang.retypePassword,
                                 border: const OutlineInputBorder(),
-                                floatingLabelBehavior: FloatingLabelBehavior.always,
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.always,
                               ),
                               enableSuggestions: false,
                               obscureText: true,
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(),
                                 (value) {
-                                  if (_formKey.currentState?.fields['password']?.value != value) {
+                                  if (_formKey.currentState?.fields['password']
+                                          ?.value !=
+                                      value) {
                                     return lang.passwordNotMatch;
                                   }
 
@@ -211,18 +226,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(bottom: kDefaultPadding),
+                            padding:
+                                const EdgeInsets.only(bottom: kDefaultPadding),
                             child: SizedBox(
                               height: 40.0,
                               width: double.infinity,
                               child: ElevatedButton(
-                                style: themeData.extension<AppButtonTheme>()!.primaryElevated,
+                                style: themeData
+                                    .extension<AppButtonTheme>()!
+                                    .primaryElevated,
                                 onPressed: (_isFormLoading
                                     ? null
                                     : () => _doRegisterAsync(
-                                          userDataProvider: context.read<UserDataProvider>(),
-                                          onSuccess: (message) => _onRegisterSuccess(context, message),
-                                          onError: (message) => _onRegisterError(context, message),
+                                          userDataProvider:
+                                              context.read<UserDataProvider>(),
+                                          onSuccess: (message) =>
+                                              _onRegisterSuccess(
+                                                  context, message),
+                                          onError: (message) =>
+                                              _onRegisterError(
+                                                  context, message),
                                         )),
                                 child: Text(lang.register),
                               ),
@@ -232,8 +255,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             height: 40.0,
                             width: double.infinity,
                             child: OutlinedButton(
-                              style: themeData.extension<AppButtonTheme>()!.secondaryOutlined,
-                              onPressed: () => GoRouter.of(context).go(RouteUri.login),
+                              style: themeData
+                                  .extension<AppButtonTheme>()!
+                                  .secondaryOutlined,
+                              onPressed: () =>
+                                  GoRouter.of(context).go(RouteUri.login),
                               child: Text(lang.backToLogin),
                             ),
                           ),

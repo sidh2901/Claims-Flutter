@@ -10,43 +10,43 @@ final sidebarMenuConfigs = [
     icon: Icons.dashboard_rounded,
     title: (context) => Lang.of(context).dashboard,
   ),
-  SidebarMenuConfig(
-    uri: RouteUri.form,
-    icon: Icons.edit_note_rounded,
-    title: (context) => Lang.of(context).forms(1),
-  ),
-  SidebarMenuConfig(
-    uri: '',
-    icon: Icons.interests_rounded,
-    title: (context) => Lang.of(context).uiElements(2),
-    children: [
-      SidebarChildMenuConfig(
-        uri: RouteUri.generalUi,
-        icon: Icons.circle_outlined,
-        title: (context) => Lang.of(context).generalUi,
-      ),
-      SidebarChildMenuConfig(
-        uri: RouteUri.colors,
-        icon: Icons.circle_outlined,
-        title: (context) => Lang.of(context).colors(2),
-      ),
-      SidebarChildMenuConfig(
-        uri: RouteUri.text,
-        icon: Icons.circle_outlined,
-        title: (context) => Lang.of(context).text,
-      ),
-      SidebarChildMenuConfig(
-        uri: RouteUri.buttons,
-        icon: Icons.circle_outlined,
-        title: (context) => Lang.of(context).buttons(2),
-      ),
-      SidebarChildMenuConfig(
-        uri: RouteUri.dialogs,
-        icon: Icons.circle_outlined,
-        title: (context) => Lang.of(context).dialogs(2),
-      ),
-    ],
-  ),
+  // SidebarMenuConfig(
+  //   uri: RouteUri.form,
+  //   icon: Icons.edit_note_rounded,
+  //   title: (context) => Lang.of(context).forms(1),
+  // ),
+  // SidebarMenuConfig(
+  //   uri: '',
+  //   icon: Icons.interests_rounded,
+  //   title: (context) => Lang.of(context).uiElements(2),
+  //   children: [
+  //     SidebarChildMenuConfig(
+  //       uri: RouteUri.generalUi,
+  //       icon: Icons.circle_outlined,
+  //       title: (context) => Lang.of(context).generalUi,
+  //     ),
+  //     SidebarChildMenuConfig(
+  //       uri: RouteUri.colors,
+  //       icon: Icons.circle_outlined,
+  //       title: (context) => Lang.of(context).colors(2),
+  //     ),
+  //     SidebarChildMenuConfig(
+  //       uri: RouteUri.text,
+  //       icon: Icons.circle_outlined,
+  //       title: (context) => Lang.of(context).text,
+  //     ),
+  //     SidebarChildMenuConfig(
+  //       uri: RouteUri.buttons,
+  //       icon: Icons.circle_outlined,
+  //       title: (context) => Lang.of(context).buttons(2),
+  //     ),
+  //     SidebarChildMenuConfig(
+  //       uri: RouteUri.dialogs,
+  //       icon: Icons.circle_outlined,
+  //       title: (context) => Lang.of(context).dialogs(2),
+  //     ),
+  //   ],
+  // ),
   SidebarMenuConfig(
     uri: '',
     icon: Icons.library_books_rounded,
@@ -74,11 +74,11 @@ final sidebarMenuConfigs = [
       ),
     ],
   ),
-  SidebarMenuConfig(
-    uri: RouteUri.iframe,
-    icon: Icons.laptop_windows_rounded,
-    title: (context) => Lang.of(context).iframeDemo,
-  ),
+  // SidebarMenuConfig(
+  //   uri: RouteUri.iframe,
+  //   icon: Icons.laptop_windows_rounded,
+  //   title: (context) => Lang.of(context).iframeDemo,
+  // ),
 ];
 
 const localeMenuConfigs = [
@@ -89,10 +89,5 @@ const localeMenuConfigs = [
   LocaleMenuConfig(
     languageCode: 'es',
     name: 'Espaneol',
-  ),
-  LocaleMenuConfig(
-    languageCode: 'zh',
-    scriptCode: 'Hant',
-    name: '中文 (繁體)',
   ),
 ];

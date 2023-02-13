@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
           onError.call('Invalid username or password.');
         } else {
           await userDataProvider.setUserDataAsync(
-            username: 'Admin ABC',
+            username: 'Admin',
             userProfileImageUrl: 'https://picsum.photos/id/1005/300/300',
           );
 

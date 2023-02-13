@@ -25,7 +25,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
   Future<bool> _getDataAsync() async {
     await Future.delayed(const Duration(seconds: 2), () {
       _formData.userProfileImageUrl = 'https://picsum.photos/id/1005/300/300';
-      _formData.username = 'Admin ABC';
+      _formData.username = 'Admin';
       _formData.email = 'adminabc@email.com';
     });
 
@@ -81,7 +81,8 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                       initialData: null,
                       future: (_future ??= _getDataAsync()),
                       builder: (context, snapshot) {
-                        if (snapshot.connectionState == ConnectionState.waiting) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
                           if (snapshot.hasData && snapshot.data!) {
                             return _content(context);
                           }
@@ -91,12 +92,14 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
 
                         return Container(
                           alignment: Alignment.center,
-                          padding: const EdgeInsets.symmetric(vertical: kDefaultPadding),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: kDefaultPadding),
                           child: SizedBox(
                             height: 40.0,
                             width: 40.0,
                             child: CircularProgressIndicator(
-                              backgroundColor: themeData.scaffoldBackgroundColor,
+                              backgroundColor:
+                                  themeData.scaffoldBackgroundColor,
                             ),
                           ),
                         );
@@ -140,8 +143,12 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                     width: 40.0,
                     child: ElevatedButton(
                       onPressed: () {},
-                      style: themeData.extension<AppButtonTheme>()!.secondaryElevated.copyWith(
-                            shape: MaterialStateProperty.all(const CircleBorder()),
+                      style: themeData
+                          .extension<AppButtonTheme>()!
+                          .secondaryElevated
+                          .copyWith(
+                            shape:
+                                MaterialStateProperty.all(const CircleBorder()),
                             padding: MaterialStateProperty.all(EdgeInsets.zero),
                           ),
                       child: const Icon(
@@ -197,7 +204,8 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(right: kDefaultPadding * 0.5),
+                      padding:
+                          const EdgeInsets.only(right: kDefaultPadding * 0.5),
                       child: Icon(
                         Icons.save_rounded,
                         size: (themeData.textTheme.button!.fontSize! + 4.0),
