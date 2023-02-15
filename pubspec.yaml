@@ -47,6 +47,8 @@ dependencies:
   cupertino_icons: ^1.0.5
   mongo_dart: ^0.8.2
   syncfusion_flutter_charts: ^20.4.49
+  fl_chart: ^0.60.0
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:

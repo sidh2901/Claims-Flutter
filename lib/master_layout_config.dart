@@ -67,11 +67,16 @@ final sidebarMenuConfigs = [
         icon: Icons.circle_outlined,
         title: (context) => Lang.of(context).register,
       ),
-      // SidebarChildMenuConfig(
-      //   uri: RouteUri.crud,
-      //   icon: Icons.circle_outlined,
-      //   title: (context) => 'CRUD',
-      // ),
+      SidebarChildMenuConfig(
+        uri: RouteUri.crud,
+        icon: Icons.circle_outlined,
+        title: (context) => 'CRUD',
+      ),
+      SidebarChildMenuConfig(
+        uri: RouteUri.datatable,
+        icon: Icons.circle_outlined,
+        title: (context) => 'Datatable',
+      ),
     ],
   ),
   // SidebarMenuConfig(

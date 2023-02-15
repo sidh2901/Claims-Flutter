@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:web_admin/providers/user_data_provider.dart';
+import 'package:web_admin/views/screens/apidata.dart';
 import 'package:web_admin/views/screens/buttons_screen.dart';
 import 'package:web_admin/views/screens/colors_screen.dart';
 import 'package:web_admin/views/screens/crud_detail_screen.dart';
@@ -19,6 +20,7 @@ import 'package:web_admin/views/screens/text_screen.dart';
 class RouteUri {
   static const String home = '/';
   static const String dashboard = '/dashboard';
+  static const String datatable = '/datatable';
   static const String myProfile = '/my-profile';
   static const String logout = '/logout';
   static const String form = '/form';
@@ -64,6 +66,13 @@ GoRouter appRouter(UserDataProvider userDataProvider) {
         pageBuilder: (context, state) => NoTransitionPage<void>(
           key: state.pageKey,
           child: const DashboardScreen(),
+        ),
+      ),
+      GoRoute(
+        path: RouteUri.datatable,
+        pageBuilder: (context, state) => NoTransitionPage<void>(
+          key: state.pageKey,
+          child: const DataTable(),
         ),
       ),
       GoRoute(

@@ -3,11 +3,19 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:web_admin/constants/dimens.dart';
 import 'package:web_admin/generated/l10n.dart';
+import 'package:web_admin/models/claims.dart';
+import 'package:web_admin/services/remote_services.dart';
 import 'package:web_admin/theme/theme_extensions/app_button_theme.dart';
+import 'dart:async';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:web_admin/theme/theme_extensions/app_color_scheme.dart';
 import 'package:web_admin/theme/theme_extensions/app_data_table_theme.dart';
 import 'package:web_admin/views/widgets/card_elements.dart';
 import 'package:web_admin/views/widgets/portal_master_layout/portal_master_layout.dart';
+
+String stringResponse = '';
+Map mapResponse = {};
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -18,6 +26,33 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   final _dataTableHorizontalScrollController = ScrollController();
+  List<Claims>? claims;
+  var isLoaded = false;
+  // Future apicall() async {
+  //   http.Response response;
+  //   response = await http.get(Uri.parse('http://20.62.171.46:9000/claims'));
+  //   if (response.statusCode == 200) {
+  //     setState(() {
+  //       stringResponse = response.body;
+  //       mapResponse = json.decode(response.body);
+  //     });
+  //   }
+  // }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+
+  getData() async {
+    claims = await RemoteService().getClaims();
+    if (claims != null) {
+      setState() {
+        isLoaded = true;
+      }
+    }
+  }
 
   @override
   void dispose() {
@@ -219,6 +254,86 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ],
       ),
     );
+  }
+}
+
+Future<http.Response> fetchAlbum() {
+  return http.get(Uri.parse('20.62.171.46:9000/claims'));
+}
+
+class Album {
+  final int claimId;
+  final String claimStatus;
+  final String claimType;
+  final int claimedAmount;
+  final String closedDate;
+  final String createdDate;
+  final String creatorId;
+  final String customerId;
+  final String documentType;
+  final int facilityId;
+  final String lastUpdateDate;
+  final String lastUpdateId;
+  final String paidAmount;
+  final String masterAccount;
+  final String palletQuantity;
+  final String serviceProviderClaimId;
+  final String userId;
+
+  const Album({
+    required this.claimId,
+    required this.claimStatus,
+    required this.claimType,
+    required this.claimedAmount,
+    required this.closedDate,
+    required this.createdDate,
+    required this.creatorId,
+    required this.customerId,
+    required this.documentType,
+    required this.facilityId,
+    required this.lastUpdateDate,
+    required this.lastUpdateId,
+    required this.masterAccount,
+    required this.paidAmount,
+    required this.palletQuantity,
+    required this.serviceProviderClaimId,
+    required this.userId,
+  });
+
+  factory Album.fromJson(Map<String, dynamic> json) {
+    return Album(
+      userId: json['userId'],
+      claimId: json['claimId'],
+      claimStatus: json['claimStatus'],
+      claimType: json['claimType'],
+      claimedAmount: json['claimedAmount'],
+      closedDate: json['closedDate'],
+      createdDate: json['createdDate'],
+      customerId: json['customerId'],
+      creatorId: json['creatorId'],
+      documentType: json['documentType'],
+      facilityId: json['facilityId'],
+      lastUpdateDate: json['lastUpdateDate'],
+      lastUpdateId: json['lastUpdateId'],
+      masterAccount: json['masterAccount'],
+      paidAmount: json['paidAmount'],
+      palletQuantity: json['palletQuantity'],
+      serviceProviderClaimId: json['serviceProviderClaimId'],
+    );
+  }
+}
+
+List<Album> parseProducts(String responseBody) {
+  final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+  return parsed.map<Album>((json) => Album.fromJson(json)).toList();
+}
+
+Future<List<Album>> fetchProducts() async {
+  final response = await http.get(Uri.parse('20.62.171.46:9000/claims'));
+  if (response.statusCode == 200) {
+    return parseProducts(response.body);
+  } else {
+    throw Exception('Unable to fetch products from the REST API');
   }
 }
 
